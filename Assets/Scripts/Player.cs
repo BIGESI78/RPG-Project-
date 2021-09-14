@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     float horizontal;
     float Vertical;
     public float TimeToDlay = 3f;
+
+    //public GameObject MainCamera;
+    //public GameObject AimCamera;
+
+
     void Start()
     {
         Anim = GetComponent<Animator>();
@@ -35,11 +40,22 @@ public class Player : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, Target, ref turnSmoothVelosity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 MoveDirection = Quaternion.Euler(0f, Target, 0f) * Vector3.forward;
-            Contoroll.Move(MoveDirection * Speed * Time.deltaTime);
+            Vector3 MoveDirection = Quaternion.Euler(0f, Target, 0f) * Vector3.forward ;
+            Contoroll.Move(MoveDirection  * Speed * Time.deltaTime);
         }
         Anim.SetFloat("BlendV", Vertical);
         Anim.SetFloat("BlendH", horizontal);
+
+        //if (Input.GetKey(KeyCode.Mouse1))
+        //{
+        //    MainCamera.gameObject.SetActive(false);
+        //    AimCamera.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+        //    MainCamera.gameObject.SetActive(true);
+        //    AimCamera.gameObject.SetActive(false);
+        //}
 
         if (Input.GetKeyDown(KeyCode.Mouse0) && Dirction.magnitude <= 0.1f)
         {
@@ -74,5 +90,4 @@ public class Player : MonoBehaviour
         Anim.SetBool("Attack", false);
         Anim.SetBool("Attackstyle", false);
     }
-
 }

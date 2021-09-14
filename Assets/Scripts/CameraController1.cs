@@ -11,7 +11,7 @@ public class CameraController1 : MonoBehaviour
     CinemachineFreeLook freeLookComponent;
     public float SpeedV;
     public float SpeedH;
-    Player player;
+
     private void Awake()
     {
         freeLookComponent = freeLookCamera.GetComponent<CinemachineFreeLook>();
@@ -21,6 +21,7 @@ public class CameraController1 : MonoBehaviour
     {
         freeLookComponent.m_XAxis.m_MaxSpeed = SpeedH * Time.deltaTime;
         freeLookComponent.m_YAxis.m_MaxSpeed = SpeedV * Time.deltaTime;
+
     }
 }
 
